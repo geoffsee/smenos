@@ -167,6 +167,34 @@ cargo install spec-ai
 muxox -c muxox.toml
 ```
 
+### Running in Isolated Container
+
+For secure, isolated execution with automatic cleanup, use the provided container script:
+
+```bash
+./smenos [arguments]
+```
+
+This script:
+- Builds a containerized environment from scratch with static binaries
+- Creates a temporary volume with all application files mirrored from `/app`
+- Runs the system in complete isolation from your host system
+- Automatically cleans up all temporary files and containers on exit
+
+The container runs on a `scratch` base (no OS, minimal attack surface) with only the required static binaries (`spec-ai`, `muxox`) and your project files. Any changes during execution are isolated to the temporary volume and removed after the session ends.
+
+**Example usage:**
+```bash
+# Run with default configuration
+./smenos
+
+# Pass arguments to muxox
+./smenos -c custom-config.toml
+
+# Run with specific muxox options
+./smenos --help
+```
+
 ## Development Status
 
 All five agents are in active specification and validation phases:
