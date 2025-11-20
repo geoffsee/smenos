@@ -162,6 +162,7 @@ When synchronized, the five specialists form something greater than capabilityâ€
 
 ```bash
 cargo install muxox
+cargo install spec-ai
 # Launch system of agents
 muxox -c muxox.toml
 ```
