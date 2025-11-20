@@ -1,0 +1,31 @@
+[[service]]
+name = "Aeromancer"
+cmd = "spec-ai run areomancer.spec -c aeromancer.agent.toml"
+cwd = "areomancer"
+log_capacity = 5000
+
+[[service]]
+name = "Emberwright"
+cmd = "spec-ai run emberwright.spec -c emberwright.agent.toml"
+cwd = "emberwright"
+log_capacity = 5000
+
+[[service]]
+name = "Quantum Diver"
+cmd = "spec-ai run quantum-diver.spec -c quantum-diver.agent.toml"
+cwd = "quantum-diver"
+log_capacity = 5000
+
+[[service]]
+name = "Relic Hacker"
+cmd = "spec-ai run relic-hacker.spec -c relic-hacker.agent.toml"
+cwd = "relic-hacker"
+log_capacity = 5000
+
+[[service]]
+name = "Whispering Cartographer"
+cmd = "spec-ai run whispering-cartographer.spec -c whispering-cartographer.agent.toml"
+cwd = "whispering-cartographer"
+log_capacity = 5000
+
+
