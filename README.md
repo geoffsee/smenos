@@ -2,6 +2,11 @@
 
 > Danger: Will skyrocket provider bill. Run at own risk.
 
+<p align="center">
+  <img src="https://github.com/geoffsee/smenos/blob/master/smenos.png?raw=true" width="66%" />
+</p>
+
+
 ## σμήνος — *a flock, a swarm, a host*
 
 > *"Like starlings turning as one mind, like bees defending the hive, like a murder of crows reading the wind—so moves the σμήνος: individual mastery in collective motion, separate wings beating to a shared rhythm."*
