@@ -3,7 +3,7 @@
 > Danger: Will skyrocket provider bill. Run at own risk.
 
 <p align="center">
-  <img src="https://github.com/geoffsee/smḗnos/blob/master/smḗnos.png?raw=true" width="66%" />
+  <img src="https://github.com/geoffsee/smḗnos/blob/master/smenos.png?raw=true" width="66%" />
 </p>
 
 
