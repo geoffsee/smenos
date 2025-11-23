@@ -1,6 +1,6 @@
 # smḗnos
 
-> Danger: Will skyrocket provider bill. Run at own risk.
+> Danger: Run at own risk.
 
 <p align="center">
   <img src="/smenos.png" width="66%" />
