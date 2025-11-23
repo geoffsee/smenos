@@ -2,54 +2,60 @@
 
 set -e
 
-# Enforce API key or endpoint requirement
-if [ -z "$OPENAI_API_KEY" ] && [ -z "$OPENAI_API_ENDPOINT" ]; then
-    echo "Error: Either OPENAI_API_KEY or OPENAI_API_ENDPOINT must be set"
-    echo ""
-    echo "Usage:"
-    echo "  export OPENAI_API_KEY='your-api-key'"
-    echo "  ./smenos [arguments]"
-    echo ""
-    echo "Or:"
-    echo "  export OPENAI_API_ENDPOINT='your-endpoint-url'"
-    echo "  ./smenos [arguments]"
-    exit 1
-fi
-
-# Configuration
-IMAGE_NAME="smenos:latest"
-TEMP_VOLUME=$(mktemp -d)
-
-# Cleanup function
-cleanup() {
-    echo "Cleaning up temporary volume: $TEMP_VOLUME"
-    rm -rf "$TEMP_VOLUME"
+check_binary() {
+    command -v "$1" >/dev/null 2>&1
+    return $?
 }
 
-trap cleanup EXIT
+# Ensure Rust is installed
+if ! check_binary cargo; then
+    echo "Rust not found — installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-# Build the container
-echo "Building container image..."
-docker build -f Containerfile -t "$IMAGE_NAME" .
+    # Source cargo environment after install
+    if [ -f "$HOME/.cargo/env" ]; then
+        . "$HOME/.cargo/env"
+    fi
 
-# Extract /app contents from the container to temp volume
-echo "Extracting /app contents to temporary volume..."
-docker create --name smenos-temp "$IMAGE_NAME" > /dev/null
-docker cp smenos-temp:/app/. "$TEMP_VOLUME/"
-docker rm smenos-temp > /dev/null
-
-# Build environment variables for docker run
-ENV_FLAGS=""
-if [ -n "$OPENAI_API_KEY" ]; then
-    ENV_FLAGS="$ENV_FLAGS -e OPENAI_API_KEY"
-fi
-if [ -n "$OPENAI_API_ENDPOINT" ]; then
-    ENV_FLAGS="$ENV_FLAGS -e OPENAI_API_ENDPOINT"
+    if ! check_binary cargo; then
+        echo "Cargo still not found after Rust install — aborting."
+        exit 1
+    fi
 fi
 
-# Run the container with temp volume mounted at /app
-echo "Running container with temporary volume mounted at: $TEMP_VOLUME"
-docker run --rm -it \
-    $ENV_FLAGS \
-    -v "$TEMP_VOLUME:/app" \
-    "$IMAGE_NAME" "$@"
+# Ensure cargo-binstall is installed
+if ! check_binary cargo-binstall; then
+    echo "cargo-binstall not found — installing..."
+    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
+    # Source any cargo env changes again
+    if [ -f "$HOME/.cargo/env" ]; then
+        . "$HOME/.cargo/env"
+    fi
+
+    if ! check_binary cargo-binstall; then
+        echo "Failed to install cargo-binstall — aborting."
+        exit 1
+    fi
+fi
+
+# Ensure spec-ai is installed
+if ! check_binary spec-ai; then
+    echo "Installing spec-ai..."
+    if ! cargo binstall spec-ai; then
+        echo "Failed to install spec-ai"
+        exit 1
+    fi
+fi
+
+# Ensure muxox is installed
+if ! check_binary muxox; then
+    echo "Installing muxox..."
+    if ! cargo binstall muxox; then
+        echo "Failed to install muxox"
+        exit 1
+    fi
+fi
+
+echo "Starting muxox..."
+exec muxox

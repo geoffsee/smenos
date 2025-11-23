@@ -3,7 +3,7 @@
 > Danger: Will skyrocket provider bill. Run at own risk.
 
 <p align="center">
-  <img src="https://github.com/geoffsee/smenos/blob/master/smenos.png?raw=true" width="66%" />
+  <img src="https://github.com/geoffsee/smḗnos/blob/master/smḗnos.png?raw=true" width="66%" />
 </p>
 
 
@@ -13,13 +13,13 @@
 
 ---
 
-**SMENOS**: The Syndicate of Multidomain Exceptional Navigation and Operations Specialists
+**smḗnos**: The Syndicate of Multidomain Exceptional Navigation and Operations Specialists
 
 From the Ancient Greek **σμήνος** (*smḗnos*): a flock of birds, a swarm of insects, a gathered host. Not merely a collection, but an emergent intelligence—where individual capabilities compound into something greater than their sum.
 
 ## The Nature of the Swarm
 
-SMENOS is a formalized operational framework for five specialists who operate at the edges of known physics, in the ruins of forgotten technologies, and across the permeable boundaries of perceivable reality. Each brings a unique method of interfacing with the world—methods that defy conventional engineering, transcend human sensory limits, and unlock capabilities thought lost, impossible, or deliberately hidden.
+smḗnos is a formalized operational framework for five specialists who operate at the edges of known physics, in the ruins of forgotten technologies, and across the permeable boundaries of perceivable reality. Each brings a unique method of interfacing with the world—methods that defy conventional engineering, transcend human sensory limits, and unlock capabilities thought lost, impossible, or deliberately hidden.
 
 Alone, each is exceptional. Together, they form a murmuration of capability: atmospheric intuition, thermal alchemy, quantum navigation, archaeological resurrection, and cognitive cartography moving in synchronized purpose.
 
@@ -116,7 +116,7 @@ Their maps do not merely represent terrain—they interpret it, anticipate it, s
 
 ## System Architecture
 
-The SMENOS framework is orchestrated through **muxox**, a multiplexed service manager that coordinates all five specialist agents concurrently. Each agent operates autonomously within its domain while maintaining protocol interfaces for inter-agent collaboration.
+The smḗnos framework is orchestrated through **muxox**, a multiplexed service manager that coordinates all five specialist agents concurrently. Each agent operates autonomously within its domain while maintaining protocol interfaces for inter-agent collaboration.
 
 ### Service Topology
 
@@ -161,38 +161,7 @@ When synchronized, the five specialists form something greater than capability�
 ## Running the System
 
 ```bash
-cargo install muxox
-cargo install spec-ai
-# Launch system of agents
-muxox -c muxox.toml
-```
-
-### Running in Isolated Container
-
-For secure, isolated execution with automatic cleanup, use the provided container script:
-
-```bash
-./smenos [arguments]
-```
-
-This script:
-- Builds a containerized environment from scratch with static binaries
-- Creates a temporary volume with all application files mirrored from `/app`
-- Runs the system in complete isolation from your host system
-- Automatically cleans up all temporary files and containers on exit
-
-The container runs on a `scratch` base (no OS, minimal attack surface) with only the required static binaries (`spec-ai`, `muxox`) and your project files. Any changes during execution are isolated to the temporary volume and removed after the session ends.
-
-**Example usage:**
-```bash
-# Run with default configuration
 ./smenos
-
-# Pass arguments to muxox
-./smenos -c custom-config.toml
-
-# Run with specific muxox options
-./smenos --help
 ```
 
 ## Development Status
@@ -219,10 +188,10 @@ The σμήνος flies in formation not because each bird follows a leader, but 
 
 **Status:** Prototype validation phase. Not approved for field deployment.
 
-**Contact:** This is a research and development framework. Operational authorization requires clearance from SMENOS oversight.
+**Contact:** This is a research and development framework. Operational authorization requires clearance from smḗnos oversight.
 
 ---
 
 *"We do not create the impossible. We formalize the unlikely, systematize the exceptional, and teach the pattern to repeat itself. The wind was always readable. The layers were always permeable. The machines always remembered. We merely learned their languages—and wrote down the grammar."*
 
-— SMENOS Founding Principles
+— smḗnos Founding Principles

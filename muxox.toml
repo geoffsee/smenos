@@ -28,4 +28,3 @@ cmd = "spec-ai run whispering-cartographer.spec -c whispering-cartographer.agent
 cwd = "whispering-cartographer"
 log_capacity = 5000
 
-
