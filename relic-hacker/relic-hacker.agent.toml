@@ -30,6 +30,43 @@ prompt = "specai (openai)> "
 # Log level: "trace", "debug", "info", "warn", "error"
 level = "info"
 
+# Service mesh configuration for local graph sync
+[mesh]
+enabled = true
+host = "127.0.0.1"
+port = 18104
+heartbeat_interval_secs = 30
+stale_timeout_secs = 90
+leader_election = true
+
+[mesh.instance]
+instance_id = "relic-hacker-mesh"
+capabilities = ["graph_sync", "relic-hacker"]
+agent_profiles = ["relic-hacker-default", "simple"]
+
+[mesh.messaging]
+enabled = true
+max_queue_size = 1000
+message_retention_secs = 3600
+
+[sync]
+enabled = true
+sync_interval_secs = 60
+max_concurrent_syncs = 3
+retry_interval_secs = 300
+max_retries = 3
+
+[sync.strategy]
+incremental_threshold = 0.3
+changelog_retention_days = 7
+sync_enabled_by_default = true
+
+[sync.conflict_resolution]
+strategy = "last_write_wins"
+auto_merge = true
+log_conflicts = true
+conflict_log_retention_days = 30
+
 # ========== DEFAULT AGENT WITH ALL FEATURES ==========
 [agents.relic-hacker-default]
 # System prompt
@@ -52,6 +89,8 @@ graph_steering = true      # Let graph influence decisions
 graph_depth = 3           # Traversal depth for context
 graph_weight = 0.5        # Balance between graph and semantic (0.0-1.0)
 graph_threshold = 0.7     # Tool recommendation threshold
+enable_graph_sync = true
+sync_graphs = []
 
 # ========== MULTI-MODEL REASONING (DEFAULT: ENABLED) ==========
 fast_reasoning = true      # Use fast model for simple tasks

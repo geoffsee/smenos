@@ -1,7 +1,7 @@
 [[service]]
 name = "Aeromancer"
-cmd = "spec-ai run areomancer.spec -c aeromancer.agent.toml"
-cwd = "areomancer"
+cmd = "spec-ai run aeromancer.spec -c aeromancer.agent.toml"
+cwd = "aeromancer"
 log_capacity = 5000
 
 [[service]]
@@ -27,4 +27,3 @@ name = "Whispering Cartographer"
 cmd = "spec-ai run whispering-cartographer.spec -c whispering-cartographer.agent.toml"
 cwd = "whispering-cartographer"
 log_capacity = 5000
-

@@ -33,7 +33,7 @@ graph TB
 
     subgraph "Aeromancer — Wind-Reader"
         A1[spec-ai runtime]
-        A2[areomancer.spec<br/>atmospheric intuition model]
+        A2[aeromancer.spec<br/>atmospheric intuition model]
         A3[aeromancer.agent.toml<br/>perception config]
         A1 -->|interprets| A2
         A1 -->|configured by| A3
@@ -41,8 +41,8 @@ graph TB
 
     subgraph "Emberwright — Flame-Shaper"
         E1[spec-ai runtime]
-        E2[emberwrite.spec<br/>exotic-alloy protocol]
-        E3[emberwrite.agent.toml<br/>forge config]
+        E2[emberwright.spec<br/>exotic-alloy protocol]
+        E3[emberwright.agent.toml<br/>forge config]
         E1 -->|interprets| E2
         E1 -->|configured by| E3
     end
@@ -111,8 +111,8 @@ graph TB
 ```toml
 [[service]]
 name = "Aeromancer"
-cmd = "spec-ai run areomancer.spec -c aeromancer.agent.toml"
-cwd = "areomancer"
+cmd = "spec-ai run aeromancer.spec -c aeromancer.agent.toml"
+cwd = "aeromancer"
 log_capacity = 5000
 ```
 
@@ -160,14 +160,14 @@ sequenceDiagram
     participant User
     participant Muxox
     participant SpecAI as spec-ai (Aeromancer)
-    participant Spec as areomancer.spec
+    participant Spec as aeromancer.spec
     participant Config as aeromancer.agent.toml
     participant Output as Deliverables
 
     User->>Muxox: muxox -c muxox.toml
     activate Muxox
 
-    Muxox->>SpecAI: spawn process (cwd: areomancer/)
+    Muxox->>SpecAI: spawn process (cwd: aeromancer/)
     activate SpecAI
 
     SpecAI->>Spec: load specification
@@ -226,13 +226,13 @@ sequenceDiagram
 smenos/
 ├── muxox.toml                      # Orchestrator configuration
 │
-├── areomancer/                     # Aeromancer workspace
+├── aeromancer/                     # Aeromancer workspace
 │   ├── aeromancer.agent.toml       # Agent runtime config
-│   └── areomancer.spec             # Atmospheric intuition spec
+│   └── aeromancer.spec             # Atmospheric intuition spec
 │
 ├── emberwright/                    # Emberwright workspace
-│   ├── emberwrite.agent.toml       # Agent runtime config
-│   └── emberwrite.spec             # Exotic-alloy forge spec
+│   ├── emberwright.agent.toml      # Agent runtime config
+│   └── emberwright.spec            # Exotic-alloy forge spec
 │
 ├── quantum-diver/                  # Quantum Diver workspace
 │   ├── quantum-diver.agent.toml    # Agent runtime config
